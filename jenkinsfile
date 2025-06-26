@@ -7,7 +7,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/PavithraChandrasekarWork/JenkinsPracticeWithProjectImage.git'
             }
         }
-
+hi
         stage('Build') {
             steps {
                 sh 'mvn clean install'
