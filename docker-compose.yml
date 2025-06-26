@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    container_name: jenkins-ci
+
+  chrome:
+    image: selenium/standalone-chrome
+    ports:
+      - "4444:4444"  # Selenium Grid UI
+    container_name: chrome-ci
+
+  firefox:
+    image: selenium/standalone-firefox
+    ports:
+      - "4445:4444"
+    container_name: firefox-ci
+
+  test-runner:
+    build: 
+      context: ./    # 👈 path to your project folder with Dockerfile
+    image: my-testng-project        # 👈 build locally instead of pulling
+    container_name: test-runner
+    depends_on:
+      - chrome
+    environment:
+      - BROWSER=chrome
+
+volumes:
+  jenkins_home:
