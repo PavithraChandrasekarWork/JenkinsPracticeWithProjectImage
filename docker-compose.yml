@@ -4,12 +4,14 @@ services:
 
   jenkins:
     image: jenkins/jenkins:lts
+    container_name: jenkins-ci
     ports:
       - "8080:8080"
-      - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
-    container_name: jenkins-ci
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+    privileged: true   
 
   chrome:
     image: selenium/standalone-chrome
