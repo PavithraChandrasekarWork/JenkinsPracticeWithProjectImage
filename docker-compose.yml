@@ -4,6 +4,7 @@ services:
 
   jenkins:
     image: jenkins/jenkins:lts
+    user: root 
     container_name: jenkins-ci
     ports:
       - "8080:8080"
