@@ -127,13 +127,15 @@ public class WebDriverServiceImpl extends HTMLReporter implements WebDriverServi
 					System.out.println("2");
 					options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
 					System.out.println("3");
-					driver = new RemoteWebDriver(new URL("http://chrome:4444/wd/hub"), options);
+					String hubUrl = System.getProperty("webdriver.remote.url");
+					driver = new RemoteWebDriver(new URL(hubUrl), options);
 
 					
 				} else if (browser.equalsIgnoreCase("firefox")) {
 					FirefoxOptions options = new FirefoxOptions();
 					options.addArguments("--headless");
-					driver = new RemoteWebDriver(new URL("http://firefox:4444/wd/hub"), options);
+					String hubUrl = System.getProperty("webdriver.remote.url");
+					driver = new RemoteWebDriver(new URL(hubUrl), options);
 
 				}
 					
