@@ -11,15 +11,6 @@ pipeline {
     }
 
     stages {
-<<<<<<< HEAD:jenkinsfile
-=======
-        stage('Clone') {
-            steps {
-                git branch: 'main', url: 'https://github.com/PavithraChandrasekarWork/JenkinsPracticeWithProjectImage.git'
-            }
-        }
-
->>>>>>> 48d8f839e947bfbf6d875519d5cbf51597cbee19:Jenkinsfile
         stage('Build') {
             steps {
                 echo "Building the Maven project..."
